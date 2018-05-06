@@ -14,3 +14,5 @@ cro <- function(Row,Column){
    V <- sqrt(chisq$statistic/sum(tbl)/(min(dim(tbl))-1))[[1]] %>% round(3)
    list(N = sum(tbl),Table = tblsum, Row_Percent = rowtbl, Column_Percent = coltbl, Chi_squared_Test = chisq, V = V)
 }
+
+#cro(occupationalStatus)
