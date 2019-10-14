@@ -5,8 +5,8 @@ group_mean_plot <- function(y,x,data){
   data %>% 
     filter(! (!!(x) %in% c("NA", ""))) %>%
     dplyr::group_by(!! x) %>%
-    dplyr::summarise(mean_y = mean(!! y),
-                     sd_y = sd(!! y),
+    dplyr::summarise(mean_y = mean(!! y, na.rm =TRUE),
+                     sd_y = sd(!! y, na.rm =TRUE),
                      n = n(),
                      ll = mean_y - qt(0.975,n-1)*sd_y/sqrt(n),
                      ul = mean_y + qt(0.975,n-1)*sd_y/sqrt(n)
