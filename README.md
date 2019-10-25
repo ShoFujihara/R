@@ -6,4 +6,4 @@
 - plot group mean
 
 ## Uniform_association_model.R
-- Duncan (1979)'s Uniform association model
+- Duncan (1979)'s uniform association model
