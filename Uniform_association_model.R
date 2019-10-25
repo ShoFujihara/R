@@ -6,6 +6,7 @@ library(tidyverse)
 library(MASS)
 library(magrittr)
 library(knitr)
+library(vcdExtra)
 
 # Data (p. 795)
 tab <- matrix(
@@ -64,6 +65,7 @@ matrix(c(fit_1$df.residual,fit_1$deviance,
   ) %>% kable()
 
 # Figure 2
+
 b_4 <- fit_4$coefficients["U:V"] %>% "*"(7:0) %>% exp() 
 
 b_5 <- fit_5$coefficients[grep("V", names(fit_5$coefficients))]
@@ -78,3 +80,10 @@ df$model <- factor(df$model)
 ggplot(df,mapping = aes(x = x, y = y, group = model, linetype = model)) + 
   geom_line() + 
   ylim(1,3)
+
+# mosaicplot
+mosaic(fit_1, ~O+D, residuals_type="rstandard")
+mosaic(fit_2, ~O+D, residuals_type="rstandard")
+mosaic(fit_3, ~O+D, residuals_type="rstandard")
+mosaic(fit_4, ~O+D, residuals_type="rstandard")
+mosaic(fit_5, ~O+D, residuals_type="rstandard")
